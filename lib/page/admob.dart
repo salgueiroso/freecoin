@@ -2,14 +2,13 @@ import 'dart:io';
 
 import 'package:firebase_admob/firebase_admob.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
 
 class MontadorAnuncios {
-  static void Inicializar() {
+  static void inicializar() {
     FirebaseAdMob.instance.initialize(appId: getAppId());
   }
 
-  static void Bar() {
+  static void bar() {
     MobileAdTargetingInfo targetingInfo = MobileAdTargetingInfo(
 //      keywords: <String>['flutterio', 'beautiful apps'],
 //      contentUrl: 'https://flutter.io',
@@ -42,7 +41,7 @@ class MontadorAnuncios {
     myBanner.load();
   }
 
-  static void Prepare(RewardEvent rewardEvent) {
+  static void prepare(RewardEvent rewardEvent) {
     MobileAdTargetingInfo targetingInfo = MobileAdTargetingInfo(
         //keywords: <String>['flutterio', 'beautiful apps'],
         //contentUrl: 'https://flutter.io',
@@ -67,10 +66,10 @@ class MontadorAnuncios {
           load();
           break;
         case RewardedVideoAdEvent.opened:
-          // TODO: Handle this case.
+          
           break;
         case RewardedVideoAdEvent.leftApplication:
-          // TODO: Handle this case.
+          
           break;
         case RewardedVideoAdEvent.closed:
           //load();
@@ -80,7 +79,7 @@ class MontadorAnuncios {
           rewardEvent(rewardType, rewardAmount);
           break;
         case RewardedVideoAdEvent.started:
-          // TODO: Handle this case.
+          
           break;
         case RewardedVideoAdEvent.completed:
           //load();

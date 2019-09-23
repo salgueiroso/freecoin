@@ -78,7 +78,7 @@ class BaseLogadoPageState extends State<BaseLogadoPage> {
         "Ganhar Moedas",
         style: TextStyle(fontSize: 20),
       ),
-      onPressed: () => MontadorAnuncios.Prepare(
+      onPressed: () => MontadorAnuncios.prepare(
           (type, amount) => print("Ganhou $type $amount")),
       padding: EdgeInsets.all(20.0),
       color: Colors.redAccent,
@@ -90,7 +90,7 @@ class BaseLogadoPageState extends State<BaseLogadoPage> {
 
   Widget _generateEarnedSaldo() {
     return FutureBuilder<Usuario>(
-      future: UsuarioService().ObterInfoUsuario(),
+      future: UsuarioService().obterUsuario(),
       builder: (context, snapshot) {
         if (snapshot.hasData)
           return Text("\$${snapshot.data.saldo.toStringAsFixed(2)}",
@@ -98,7 +98,9 @@ class BaseLogadoPageState extends State<BaseLogadoPage> {
               style: TextStyle(color: Colors.green, fontSize: 30));
         else if (snapshot.hasError) return Text("Tente novamente");
 
-        return CircularProgressIndicator();
+        return CircularProgressIndicator(
+          valueColor: AlwaysStoppedAnimation<Color>(Colors.blueAccent),
+        );
       },
     );
   }
@@ -107,6 +109,6 @@ class BaseLogadoPageState extends State<BaseLogadoPage> {
   void initState() {
     super.initState();
 
-    MontadorAnuncios.Bar();
+    MontadorAnuncios.bar();
   }
 }

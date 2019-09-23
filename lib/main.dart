@@ -3,7 +3,7 @@ import 'package:free_coin/page/admob.dart';
 import 'package:free_coin/page/logado.page.dart';
 
 void main() {
-  MontadorAnuncios.Inicializar();
+  MontadorAnuncios.inicializar();
   runApp(FreeCoinApp());
 }
 
@@ -18,7 +18,9 @@ class FreeCoinApp extends StatelessWidget {
         ),
         initialRoute: '/',
         routes: {
-          '/': (context) => new BaseLogadoPage(titulo: "Earn CryptoCoins free",),
+          '/': (context) => new BaseLogadoPage(
+                titulo: "Free CryptoCoins",
+              ),
           '/reward': null
         });
   }
